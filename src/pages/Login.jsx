@@ -29,12 +29,12 @@ export default function Login() {
         ? await login({ email: form.email.trim(), password: form.password })
         : await register({ ...form, role: 'STUDENT' });
 
-      loginUser({
-        id: data.id, name: data.name, email: data.email,
-        role: data.role, branch: data.branch, section: data.section
-      }, data.token);
+    loginUser({
+  id: data.id, name: data.fullName, email: data.email,
+  role: data.role, branch: data.branch, section: data.section
+}, data.token);
 
-      toast.success(`Welcome, ${data.name}!`);
+toast.success(`Welcome, ${data.fullName}!`);
       const dest = {
         SUPER_ADMIN: '/super-admin',
         ADMIN:       '/admin',
